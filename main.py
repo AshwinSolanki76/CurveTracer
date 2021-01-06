@@ -1,13 +1,14 @@
 import turtle
 import numpy as np
 from Theme import Themes
+from Theme import randomTheme
 
 class Curve:
     def __init__(self,name="Title",windowHeight=800,windowWidth=1600,canvasHeight=7000,canvasWidth=10000) -> None:
         
         # turtle.setup(windowWidth,windowHeight) #make changes in window size 1537 760
         self.window=turtle
-
+        self.window.hideturtle()
         self.canvasWidth=canvasWidth
         self.canvasHeight=canvasHeight
 
@@ -41,6 +42,15 @@ class Curve:
         self.setBgColour(Themes[name]['bg'])
         self.setAxisPenColour(Themes[name]['ax'])
         self.setCurvePenColour(Themes[name]['pen'])
+    def ApplyRandomTheme(self):
+        self.bgColour=randomTheme['bg']
+        # self.
+        # self.window.pensize(3)
+        self.CurvePenStrokeSize=5
+        self.setBgColour(randomTheme['bg'])
+        self.setAxisPenColour(randomTheme['ax'])
+        self.setCurvePenColour(randomTheme['pen'])
+
 
     def setWindowName(self,name):
         self.window.title(name)
@@ -106,7 +116,9 @@ def x(x):
 
 c=Curve()
 c.setWindowName("Apple")
-c.applyTheme('DarkAndYello')
+# c.applyTheme('DarkAndYello')
+# c.applyTheme()
+c.ApplyRandomTheme()
 c.MakeAxis()
 
 c.trace(x,start=-150,stop=150,step=500)
