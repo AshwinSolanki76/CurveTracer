@@ -1,43 +1,80 @@
-from os import spawnl
 import turtle
 import numpy as np
+from Theme import Themes
 
 class Curve:
     def __init__(self,name="Title",windowHeight=800,windowWidth=1600,canvasHeight=7000,canvasWidth=10000) -> None:
         
         # turtle.setup(windowWidth,windowHeight) #make changes in window size 1537 760
         self.window=turtle
+
         self.canvasWidth=canvasWidth
         self.canvasHeight=canvasHeight
+
+        self.penSpeed=100000
+
+        self.CurvePenStrokeSize=2
+        self.AxisPenStrokeSize=1
+        self.AxisPenColour=(0,0,0)
+        self.CurvePenColour=(0,0,0)
+        self.bgColour=(255,255,255)
+
         self.window.screensize(canvasWidth,canvasHeight) #make changes in canvas
         self.window.getcanvas().master.geometry('{}x{}+{}+{}'.format(windowWidth, windowHeight, -10,0))
 
         self.window.title(name)
 
         self.window.Screen().colormode(255)
-        self.window.Screen().bgcolor(26,26,46)
-        self.window.pencolor(233,69,96)
+        self.window.Screen().bgcolor(self.bgColour)
+        self.window.pencolor(self.AxisPenColour)
         self.window.pensize(10)
         self.window.speed(10000)
         # __class__.MakeAxis
         # self.window.done()
+    
+    def applyTheme(self,name):
+        '''Sets Pencolour and bg colour'''
+        self.bgColour=Themes[name]['bg']
+        # self.
+        # self.window.pensize(3)
+        self.CurvePenStrokeSize=5
+        self.setBgColour(Themes[name]['bg'])
+        self.setAxisPenColour(Themes[name]['ax'])
+        self.setCurvePenColour(Themes[name]['pen'])
 
     def setWindowName(self,name):
         self.window.title(name)
-    def setPenSize(self,size):
+
+    def setAxisPenSize(self,size):
+        self.AxisPenStrokeSize=size
+        self.window.pensize(size)
+    def setCurvePenSize(self,size):
+        self.CurvePenStrokeSize=size
         self.window.pensize(size)
     def setPenSpeed(self,speed):
+        self.penSpeed=speed
         self.window.speed(speed)
-    def getPenColour(self):
-        pass
+    def setAxisPenColour(self,colour):
+        self.AxisPenColour=colour
+        self.window.pencolor(colour)
+    def setCurvePenColour(self,colour):
+        self.CurvePenColour=colour
+        self.window.pencolor(colour)
+
+
+    def setBgColour(self,colour):
+        self.bgColour=colour
+        self.window.Screen().bgcolor(colour)
+    
     def ColourSetter():
         '''Change Background Colour and Pen(stroke) Colour'''
         pass
 
     def MakeAxis(self):
         self.window.up()
-        self.window.pencolor(15,52,96)
-        self.window.pensize(1)
+        self.setAxisPenColour(self.AxisPenColour) #15,52,96
+        # self.window.pensize(1)
+        self.setAxisPenSize(self.AxisPenStrokeSize)
         self.window.goto(-1000,0)
         self.window.down()
         self.window.goto(1000,0)
@@ -56,6 +93,9 @@ class Curve:
         self.window.up()
         self.window.goto(x[0],y[0])
         self.window.down()
+        # self.window.pensize(5)
+        self.setCurvePenSize(self.CurvePenStrokeSize)
+        self.setCurvePenColour(self.CurvePenColour)
         for i in zip(x,y):
             self.window.goto(i)
         print("Done")
@@ -65,14 +105,9 @@ def x(x):
     return (x**3)/10000
 
 c=Curve()
-c.MakeAxis()
 c.setWindowName("Apple")
-c.trace(x,start=-500,stop=500,step=1000)
+c.applyTheme('DarkAndYello')
+c.MakeAxis()
+
+c.trace(x,start=-150,stop=150,step=500)
 c.window.done()
-
-
-# turtle.up()
-# turtle.goto(0,0)
-# turtle.down()
-# turtle.goto(100,500)
-# turtle.done()
