@@ -1,5 +1,7 @@
 # CurveTracer
-It makes 📈curves of any function given to it
+It makes 📈curves of any function given to it  
+
+[![GitHub license](https://img.shields.io/github/license/AshwinSolanki76/CurveTracer)](https://github.com/AshwinSolanki76/CurveTracer/blob/main/LICENSE)
 
 # Have a look x^3
 <!-- ![Xcube](/Photos/XcubeDark.png) -->
