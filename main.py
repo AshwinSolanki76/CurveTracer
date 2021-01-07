@@ -42,6 +42,7 @@ class Curve:
         self.setBgColour(Themes[name]['bg'])
         self.setAxisPenColour(Themes[name]['ax'])
         self.setCurvePenColour(Themes[name]['pen'])
+        
     def ApplyRandomTheme(self):
         self.bgColour=randomTheme['bg']
         # self.
@@ -96,6 +97,7 @@ class Curve:
         self.window.goto(0,0)
 
     def trace(self,func,start=0,stop=1000,step=1000):
+        self.MakeAxis()
         x=np.linspace(start,stop,step)
         self.window.pensize(2)
         self.window.pencolor(233,69,96)
@@ -106,20 +108,23 @@ class Curve:
         # self.window.pensize(5)
         self.setCurvePenSize(self.CurvePenStrokeSize)
         self.setCurvePenColour(self.CurvePenColour)
+        colourr=list(self.CurvePenColour)
+        print(colourr)
         for i in zip(x,y):
             self.window.goto(i)
-        print("Done")
 
 
-def x(x):
-    return (x**3)/10000
 
-c=Curve()
-c.setWindowName("Apple")
-# c.applyTheme('DarkAndYello')
+# def x(x):
+#     # y=sum([100*np.sin(i*x)/i for i in range(1,100)])
+#     return (x**2)/100
+# c=Curve()
+# c.setWindowName("Apple")
+# c.applyTheme('Dark')
 # c.applyTheme()
-c.ApplyRandomTheme()
-c.MakeAxis()
+# c.ApplyRandomTheme()
+# c.MakeAxis()
 
-c.trace(x,start=-150,stop=150,step=500)
-c.window.done()
+# c.trace(x,start=-100,stop=100,step=100)
+
+# c.window.done()
