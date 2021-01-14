@@ -12,3 +12,7 @@ It makes 📈curves of any function given to it
 
 # Some Randomly Generated Themes
 <img src="Photos/ran (1).png" alt="DarkAndYellow" width="200"/> <img src="Photos/ran (2).png" alt="DarkAndYellow" width="200"/> <img src="Photos/ran (3).png" alt="DarkAndYellow" width="200"/> <img src="Photos/ran (4).png" alt="DarkAndYellow" width="200"/> <img src="Photos/ran (5).png" alt="DarkAndYellow" width="200"/>
+
+## LICENSE
+
+Copyright (c) 2021, and licensed under [The MIT License](https://github.com/AshwinSolanki76/CurveTracer/blob/main/LICENSE).
